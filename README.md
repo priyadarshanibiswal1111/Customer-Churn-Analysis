@@ -2,9 +2,9 @@
 
 ## 📌 Project Overview
 
-This project analyzes customer churn behavior and builds machine learning models to predict customers who are likely to leave a telecom service.
+Customer churn is a major business problem for subscription-based companies. This project analyzes customer behavior, identifies key churn patterns, and builds machine learning models to predict customers who are likely to churn.
 
-The project uses Python and machine learning techniques to identify important churn patterns, customer risk factors, and high-risk customer segments.
+The project combines data cleaning, exploratory data analysis, feature engineering, machine learning, model evaluation, and business recommendations.
 
 ---
 
@@ -13,24 +13,28 @@ The project uses Python and machine learning techniques to identify important ch
 The main objectives of this project are:
 
 - Analyze customer churn patterns
-- Identify factors associated with customer churn
-- Build machine learning models for churn prediction
 - Identify high-risk customer segments
-- Evaluate model performance using classification metrics
-- Provide actionable business recommendations
+- Understand factors associated with customer churn
+- Build machine learning models to predict churn
+- Compare different classification models
+- Provide actionable customer retention recommendations
 
 ---
 
-## 📊 Dataset
+## 📂 Dataset
 
 **Dataset:** IBM Telco Customer Churn Dataset
 
 - Original customers: 7,043
-- Customers after cleaning: 7,032
+- Cleaned customers: 7,032
 - Original columns: 21
-- Target variable: Churn
+- Removed records: 11 invalid/blank `TotalCharges` values
+- Target variable: `Churn`
 
-During data cleaning, 11 records with blank or invalid `TotalCharges` values were removed.
+### Target Variable
+
+- `1` = Customer Churned
+- `0` = Customer Did Not Churn
 
 ---
 
@@ -42,7 +46,8 @@ During data cleaning, 11 records with blank or invalid `TotalCharges` values wer
 - Matplotlib
 - Seaborn
 - Scikit-learn
-- Git & GitHub
+- Git
+- GitHub
 
 ---
 
@@ -53,131 +58,224 @@ During data cleaning, 11 records with blank or invalid `TotalCharges` values wer
 3. Exploratory Data Analysis
 4. Feature Analysis
 5. Feature Engineering
-6. Logistic Regression Model Training
+6. Logistic Regression Model
 7. Model Evaluation
-8. Random Forest Model Training
+8. Random Forest Model
 9. Feature Importance Analysis
 10. Model Comparison
-11. Business Insights
+11. Business Insights & Recommendations
 
 ---
 
-## 📈 Key Business Insights
+# 📊 Exploratory Data Analysis
 
-### 1. Customer Tenure
+## Overall Churn Distribution
 
-Customers with 0–6 months of tenure have a churn rate of **53.33%**.
+![Churn Distribution](outputs/churn_distribution.png)
 
-**Recommendation:** Strengthen onboarding and early-stage customer retention programs.
+## Churn by Contract Type
 
-### 2. Contract Type
+![Churn by Contract](outputs/churn_by_contract.png)
 
-Month-to-month customers have the highest churn rate at **42.71%**.
+## Churn by Internet Service
 
-**Recommendation:** Provide incentives to encourage customers to move toward longer-term contracts.
+![Churn by Internet Service](outputs/churn_by_internet_service.png)
 
-### 3. Monthly Charges
+## Churn by Payment Method
 
-Customers paying $70–$100 per month have a churn rate of **37.85%**.
-
-**Recommendation:** Consider personalized pricing plans and service bundles for high-charge customers.
-
-### 4. Payment Method
-
-Electronic check customers have a churn rate of **45.29%**.
-
-**Recommendation:** Encourage automatic payment methods through targeted incentives.
-
-### 5. Tech Support
-
-Customers without Tech Support have a churn rate of **41.65%**.
-
-**Recommendation:** Promote Tech Support packages to customers at higher churn risk.
-
-### 6. Online Security
-
-Customers without Online Security have a churn rate of **41.78%**.
-
-**Recommendation:** Promote Online Security services to vulnerable customer segments.
+![Churn by Payment Method](outputs/churn_by_payment_method.png)
 
 ---
 
-## ⚠️ High-Risk Customer Segment
+# 🔎 Feature Analysis
 
-A high-risk customer segment was identified using the following conditions:
+## Churn by Tenure Group
+
+![Churn by Tenure](outputs/churn_by_tenure_group.png)
+
+## Churn by Monthly Charges
+
+![Churn by Monthly Charges](outputs/churn_by_monthly_charges.png)
+
+## Churn by Tech Support
+
+![Churn by Tech Support](outputs/churn_by_tech_support.png)
+
+## Churn by Online Security
+
+![Churn by Online Security](outputs/churn_by_online_security.png)
+
+## Churn by Senior Citizen Status
+
+![Churn by Senior Status](outputs/churn_by_senior_status.png)
+
+---
+
+# 📈 Key Business Insights
+
+### 1. Overall Churn Rate
+
+The overall customer churn rate was **26.58%**.
+
+This indicates that approximately one in four customers left the service.
+
+**Recommendation:** Develop targeted customer retention and engagement strategies.
+
+---
+
+### 2. Month-to-Month Customers
+
+Month-to-month customers had a **42.71% churn rate**, considerably higher than customers on longer-term contracts.
+
+**Recommendation:** Encourage customers to move to one-year or two-year contracts through loyalty benefits and suitable offers.
+
+---
+
+### 3. New Customers Are High Risk
+
+Customers with **0–6 months of tenure** had a **53.33% churn rate**.
+
+**Recommendation:** Strengthen onboarding, early engagement, and first-year retention programs.
+
+---
+
+### 4. Higher Monthly Charges
+
+Customers paying **$70–$100 per month** had a **37.85% churn rate**.
+
+**Recommendation:** Review pricing, bundles, and value-added services for higher-paying customers.
+
+---
+
+### 5. Electronic Check Payments
+
+Customers using **Electronic Check** had a **45.29% churn rate**.
+
+**Recommendation:** Encourage automatic payment methods through convenient payment options and customer education.
+
+---
+
+### 6. Technical Support
+
+Customers without Tech Support had a **41.65% churn rate**, compared with **15.20%** among customers with Tech Support.
+
+**Recommendation:** Promote technical support services and proactive issue resolution.
+
+---
+
+### 7. Online Security
+
+Customers without Online Security had a **41.78% churn rate**, compared with **14.64%** among customers with Online Security.
+
+**Recommendation:** Promote security services as part of customer packages.
+
+---
+
+# 🚨 High-Risk Customer Segment
+
+A high-risk segment was identified using the following conditions:
 
 - Month-to-month contract
-- Monthly charges above $70
+- Monthly charges greater than $70
 - Tenure of 12 months or less
 
-### Result
+### Segment Results
 
-- Customers in segment: **856**
+- Customers: **856**
 - Churn rate: **69.04%**
 
-This segment should be prioritized for proactive customer retention campaigns.
+This segment represents a strong priority for targeted retention campaigns.
 
-> Note: This is a descriptive customer segment based on observed churn patterns and does not imply causation.
+> Note: These findings describe associations in the dataset and should not be interpreted as proof of causation.
 
 ---
 
-## 🤖 Machine Learning Models
+# 🤖 Machine Learning
 
-Two classification models were evaluated:
+Two classification models were developed and compared:
 
-| Model | Accuracy | Precision | Recall | F1 Score | ROC-AUC |
+- Logistic Regression
+- Random Forest
+
+The dataset was divided using an **80/20 stratified train-test split**.
+
+---
+
+## 📊 Model Performance
+
+| Model | Accuracy | Precision | Recall | F1-Score | ROC-AUC |
 |---|---:|---:|---:|---:|---:|
 | Logistic Regression | 80.38% | 64.76% | 57.49% | 60.91% | 83.57% |
 | Random Forest | 74.77% | 51.71% | 77.01% | 61.87% | 83.46% |
 
-### Model Selection
+---
 
-Random Forest was selected as the **business-focused model** because it achieved:
+## 🏆 Model Selection
+
+**Random Forest** was selected as the business-focused model because it achieved:
 
 - Higher Recall: **77.01%**
-- Slightly higher F1 Score: **61.87%**
+- Slightly higher F1-Score: **61.87%**
 - ROC-AUC: **83.46%**
 
-Higher recall is useful in churn retention scenarios because identifying more potential churners can help the business take proactive action.
+Higher recall is useful for churn detection because the business may prefer to identify more customers who are actually at risk of leaving.
 
-However, Random Forest has lower precision and accuracy than Logistic Regression, so model selection depends on the business cost of false positives versus missed churners.
-
----
-
-## 🔍 Top Churn Predictors
-
-The most important predictive features identified using Random Forest included:
-
-- Tenure
-- Total Charges
-- Monthly Charges
-- Contract Type
-- Internet Service
-- Payment Method
-- Online Security
-- Tech Support
-
-Feature importance represents predictive contribution and does not necessarily imply causation.
+However, Random Forest has lower precision and accuracy than Logistic Regression, so the final model choice should depend on the company's retention campaign cost and tolerance for false positives.
 
 ---
 
-## 💼 Skills Demonstrated
+## 📉 Confusion Matrix
 
-- Data Cleaning
-- Exploratory Data Analysis
-- Feature Engineering
-- Data Visualization
-- Machine Learning
-- Classification
-- Model Evaluation
-- Feature Importance Analysis
-- Business Analysis
-- Customer Retention Analytics
-- Python Programming
+![Confusion Matrix](outputs/confusion_matrix_logistic_regression.png)
+
+## 📈 ROC Curve
+
+![ROC Curve](outputs/roc_curve_logistic_regression.png)
 
 ---
 
-## 📁 Project Structure
+# 🔬 Feature Importance
+
+The Random Forest model identified the following important predictive features:
+
+1. Tenure
+2. Total Charges
+3. Monthly Charges
+4. Two-Year Contract
+5. Fiber Optic Internet Service
+6. Electronic Check Payment
+7. One-Year Contract
+8. Online Security
+9. Tech Support
+10. Paperless Billing
+
+![Top Feature Importance](outputs/top_10_feature_importance.png)
+
+> Feature importance indicates predictive contribution within the model and should not be interpreted as causal impact.
+
+---
+
+# ⚖️ Model Comparison
+
+![Model Comparison](outputs/model_comparison.png)
+
+---
+
+# 💼 Business Recommendations
+
+Based on the analysis, the company can focus on:
+
+- Improving onboarding for new customers
+- Converting month-to-month customers to longer-term contracts
+- Creating targeted offers for high-paying customers
+- Promoting automatic payment methods
+- Increasing awareness of Tech Support services
+- Promoting Online Security packages
+- Prioritizing high-risk customers for proactive retention campaigns
+
+---
+
+# 📁 Project Structure
 
 ```text
 Customer_Churn_Analysis/
@@ -204,13 +302,12 @@ Customer_Churn_Analysis/
 │   ├── churn_by_tech_support.png
 │   ├── churn_by_online_security.png
 │   ├── churn_by_senior_status.png
+│   ├── tenure_vs_churn.png
+│   ├── monthly_charges_vs_churn.png
 │   ├── confusion_matrix_logistic_regression.png
 │   ├── roc_curve_logistic_regression.png
 │   ├── top_10_feature_importance.png
-│   ├── feature_importance.csv
-│   ├── model_comparison.csv
-│   ├── model_comparison.png
-│   └── business_insights.csv
+│   └── model_comparison.png
 │
 ├── src/
 │   ├── 01_data_understanding.py
@@ -225,13 +322,44 @@ Customer_Churn_Analysis/
 │   ├── 10_model_comparison.py
 │   └── 11_business_insights.py
 │
-├── requirements.txt
-└── README.md
+├── .gitignore
+├── README.md
+└── requirements.txt
+```
 
 ---
 
-## 👩‍💻 Author
+# 🎯 Key Project Outcomes
+
+- Analyzed **7K+ customer records**
+- Performed data cleaning and preprocessing
+- Conducted exploratory data analysis
+- Identified major churn patterns
+- Created engineered machine learning features
+- Built Logistic Regression and Random Forest models
+- Evaluated models using Accuracy, Precision, Recall, F1-Score, and ROC-AUC
+- Identified high-risk customer segments
+- Generated actionable customer retention recommendations
+
+---
+
+# 💡 Business Impact
+
+This analysis can help a subscription-based business:
+
+- Identify customers at higher risk of churn
+- Prioritize retention campaigns
+- Improve customer onboarding
+- Increase adoption of support and security services
+- Encourage longer-term contracts
+- Make data-driven customer retention decisions
+
+---
+
+# 👩‍💻 Author
 
 **Priyadarshani Biswal**
 
 Aspiring Data Analyst
+
+**Skills:** Python | SQL | Excel | Power BI | Data Analysis | Machine Learning
