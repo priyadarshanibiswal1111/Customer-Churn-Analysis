@@ -1,4 +1,15 @@
 # Customer Churn Analysis & Prediction
+> End-to-end customer churn analysis and machine learning project using Python, Pandas, Scikit-learn, and business-focused insights.
+
+### ⭐ Project Highlights
+
+- 📊 Analyzed **7K+ customer records**
+- 🔍 Identified key customer churn patterns and high-risk segments
+- 🤖 Built **Logistic Regression** and **Random Forest** models
+- 📈 Achieved **83.57% ROC-AUC** with Logistic Regression
+- 🎯 Random Forest achieved **77.01% Recall** for churn detection
+- 💼 Generated actionable **customer retention recommendations**
+
 
 ## 📌 Project Overview
 
