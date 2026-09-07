@@ -122,6 +122,31 @@ The main objectives of this project are:
 
 ---
 
+# 📊 Power BI Dashboard
+
+An interactive Power BI dashboard was developed to monitor customer churn patterns, identify high-risk customer segments, and support data-driven retention strategies.
+
+### Dashboard Features
+
+- Total Customers
+- Churned Customers
+- Churn Rate
+- Average Monthly Charges
+- High-Risk Customers
+- Churn Rate by Contract Type
+- Churn Rate by Internet Service
+- Churn Rate by Payment Method
+- Churn Rate by Tenure
+- Churn Rate by Monthly Charges
+- Churn Rate by Tech Support
+- Churn Rate by Online Security
+- Churn Rate by Senior Citizen
+- Interactive slicers for Contract, Internet Service, and Payment Method
+
+![Customer Churn Power BI Dashboard](dashboard.png)
+
+---
+
 # 📈 Key Business Insights
 
 ### 1. Overall Churn Rate
@@ -373,4 +398,4 @@ This analysis can help a subscription-based business:
 
 Aspiring Data Analyst
 
-**Skills:** Python | SQL | Excel | Power BI | Data Analysis | Machine Learning
+**Skills:** Python | SQL | Excel | Power BI | Data Analysis | Machine Learning 
